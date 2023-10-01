@@ -40,7 +40,6 @@
   },
   "scripts": {
     "build": "lerna run build",
-    "dist": "lerna run dist",
     "check-license": "./scripts/check-license.sh",
     "coverage": "lerna run coverage",
     "depcheck": "./scripts/run-depcheck.sh",

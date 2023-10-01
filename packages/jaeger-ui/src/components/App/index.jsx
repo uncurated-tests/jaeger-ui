@@ -14,7 +14,7 @@
 
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Route, Redirect, Switch, Router } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
 
 import NotFound from './NotFound';
 import Page from './Page';
