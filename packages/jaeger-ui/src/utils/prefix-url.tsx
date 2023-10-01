@@ -34,7 +34,7 @@ export function getPathPrefix(orig?: string, sitePref?: string) {
   return s.replace(rx, '');
 }
 
-function getBackend(pathname: string) {
+function getBackendPrefix(pathname: string) {
   if (!pathname.startsWith('/--/')) {
     return '';
   }
@@ -45,7 +45,7 @@ function getBackend(pathname: string) {
 }
 
 const pathPrefix = getPathPrefix(origin, sitePrefix);
-const backend = getBackend(window.location.pathname);
+const backendPrefix = getBackendPrefix(window.location.pathname);
 
 /**
  * Add the path prefix to the  URL. See [site-prefix.js](../site-prefix.js) and
@@ -56,13 +56,13 @@ const backend = getBackend(window.location.pathname);
  */
 export default function prefixUrl(value?: string) {
   const s = value == null ? '' : String(value);
-  return `${pathPrefix}${backend ? `/--/${encodeURIComponent(backend)}` : ''}${s}`;
+  return `${pathPrefix}${backendPrefix ? `/--/${encodeURIComponent(backendPrefix)}` : ''}${s}`;
 }
 
 export function backendUrl(value?: string) {
   const s = value == null ? '' : String(value);
-  if (!backend) {
+  if (!backendPrefix) {
     return prefixUrl(s);
   }
-  return `${backend}${s}`;
+  return `${backendPrefix}${s}`;
 }
