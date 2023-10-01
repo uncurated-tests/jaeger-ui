@@ -14,7 +14,7 @@
 
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Route, Switch, Router } from 'react-router-dom';
+import { Route, Redirect, Switch, Router } from 'react-router-dom';
 
 import NotFound from './NotFound';
 import Page from './Page';
@@ -62,9 +62,9 @@ export default class JaegerUIApp extends Component {
               <Route path={qualityMetricsPath} component={QualityMetrics} />
               <Route path={monitorATMPath} component={MonitorATMPage} />
 
-              <Route exact path="/" component={TracePage} />
-              <Route exact path={prefixUrl()} component={TracePage} />
-              <Route exact path={prefixUrl('/')} component={TracePage} />
+              <Redirect exact path="/" to={searchPath} />
+              <Redirect exact path={prefixUrl()} to={searchPath} />
+              <Redirect exact path={prefixUrl('/')} to={searchPath} />
 
               <Route component={NotFound} />
             </Switch>
