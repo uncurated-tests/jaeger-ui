@@ -25,7 +25,7 @@ const defaultConfig: Config = {
   criticalPathEnabled: true,
   dependencies: {
     dagMaxNumServices: FALLBACK_DAG_MAX_NUM_SERVICES,
-    menuEnabled: true,
+    menuEnabled: false,
   },
   menu: [
     {
