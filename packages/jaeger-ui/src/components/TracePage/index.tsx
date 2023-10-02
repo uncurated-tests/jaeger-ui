@@ -439,7 +439,7 @@ export class TracePageImpl extends React.PureComponent<TProps, TState> {
 
 // export for tests
 export function mapStateToProps(state: ReduxState, ownProps: TOwnProps): TReduxProps {
-  const id = ownProps.match.params.id ?? new URLSearchParams(ownProps.location.search).get('traceId');
+  const { id } = ownProps.match.params;
   const { archive, config, embedded, router } = state;
   const { traces } = state.trace;
   const trace = id ? traces[id] : null;
