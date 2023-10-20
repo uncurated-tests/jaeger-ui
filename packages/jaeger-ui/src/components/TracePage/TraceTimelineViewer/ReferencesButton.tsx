@@ -62,7 +62,7 @@ export default class ReferencesButton extends React.PureComponent<TReferencesBut
       overlayClassName: 'ReferencesButton--tooltip',
     };
 
-    if (references.length > 1) {
+    if (references.length > 1 || (references.length === 1 && references[0].refType !== 'CHILD_OF')) {
       return (
         <Tooltip {...tooltipProps}>
           <Dropdown overlay={this.referencesList(references)} placement="bottomRight" trigger={['click']}>

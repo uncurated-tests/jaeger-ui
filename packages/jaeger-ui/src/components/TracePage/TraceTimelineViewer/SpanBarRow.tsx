@@ -170,15 +170,17 @@ export default class SpanBarRow extends React.PureComponent<SpanBarRowProps> {
               </span>
               <small className="endpoint-name">{rpc ? rpc.operationName : operationName}</small>
             </a>
-            {span.references && span.references.length > 1 && (
-              <ReferencesButton
-                references={span.references}
-                tooltipText="Contains multiple references"
-                focusSpan={focusSpan}
-              >
-                <IoGitNetwork />
-              </ReferencesButton>
-            )}
+            {span.references &&
+              (span.references.length > 1 ||
+                (span.references.length === 1 && span.references[0].refType !== 'CHILD_OF')) && (
+                <ReferencesButton
+                  references={span.references}
+                  tooltipText="Contains multiple references"
+                  focusSpan={focusSpan}
+                >
+                  <IoGitNetwork />
+                </ReferencesButton>
+              )}
             {span.subsidiarilyReferencedBy && span.subsidiarilyReferencedBy.length > 0 && (
               <ReferencesButton
                 references={span.subsidiarilyReferencedBy}
