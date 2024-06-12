@@ -26,7 +26,7 @@ import {
   trackJsonView,
   trackRawJsonView,
 } from './TracePageHeader.track';
-import prefixUrl from '../../../utils/prefix-url';
+import prefixUrl, { backendUrl } from '../../../utils/prefix-url';
 import { ETraceViewType } from '../types';
 import { getTargetBlankOrTop } from '../../../utils/config/get-target';
 
@@ -87,17 +87,17 @@ export default function AltViewOptions(props: Props) {
       ))}
       {!disableJsonView && (
         <Menu.Item>
-          <Link
-            to={prefixUrl(`/api/traces/${traceID}?prettyPrint=true`)}
+          <a
+            href={backendUrl(`/api/traces/${traceID}?prettyPrint=true`)}
             rel="noopener noreferrer"
             target={getTargetBlankOrTop()}
             onClick={trackJsonView}
           >
             Trace JSON
-          </Link>
+          </a>
         </Menu.Item>
       )}
-      {!disableJsonView && (
+      {/* {!disableJsonView && (
         <Menu.Item>
           <Link
             to={prefixUrl(`/api/traces/${traceID}?raw=true&prettyPrint=true`)}
@@ -108,7 +108,7 @@ export default function AltViewOptions(props: Props) {
             Trace JSON (unadjusted)
           </Link>
         </Menu.Item>
-      )}
+      )} */}
     </Menu>
   );
 
